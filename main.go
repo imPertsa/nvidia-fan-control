@@ -56,7 +56,7 @@ func getFanSpeedForTemperature(temp, prevTemp, prevSpeed int, ranges []Temperatu
 func main() {
 	logFile, err := os.OpenFile("/var/log/nvidia_fan_control.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
-		log.Fatalf("Failed to open log file: %v", err)
+		log.Fatalf("Failed to open log file.: %v", err)
 	}
 	defer logFile.Close()
 	log.SetOutput(logFile)

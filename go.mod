@@ -1,4 +1,4 @@
-module github.com/ZanMax/nvidia-fan-control
+module github.com/imPertsa/nvidia-fan-control
 
 go 1.20
 

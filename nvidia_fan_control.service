@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 ExecStart=sudo /usr/local/bin/nvidia_fan_control
-WorkingDirectory=/home/pertsa/
+WorkingDirectory=/home/<user>/
 StandardOutput=file:/var/log/nvidia_fan_control.log
 StandardError=file:/var/log/nvidia_fan_control_error.log
 Restart=always

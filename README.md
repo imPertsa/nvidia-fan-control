@@ -5,19 +5,17 @@ A lightweight Linux utility for monitoring GPU temperatures and dynamically cont
 ## Requirements
 - NVIDIA GPUs with NVML support
 - NVIDIA drivers 520 or higher
-
-## Build
-```bash
-go build -o nvidia_fan_control
-```
+- Go
 
 ## Installation
+1. Edit `WorkingDirectory` from `nvidia_fan_control.service` to point to your `~/`
+2. Install
 ```bash
-sudo mv nvidia_fan_control /usr/local/bin/
+make install
 ```
 
 ## Configuration
-edit the file `config.json` with the following structure
+Edit the file `.nvidia_fan_control` with the following structure
 ```
 {
     "time_to_update": 5,
@@ -32,32 +30,10 @@ edit the file `config.json` with the following structure
 ```
 
 ## Service
-```bash
-sudo nano /etc/systemd/system/nvidia_fan_control.service
-```
-update WorkingDirectory and set the path to your config file
-```
-[Unit]
-Description=NVIDIA Fan Control Service
-After=network.target
 
-[Service]
-ExecStart=/usr/bin/sudo /usr/local/bin/nvidia_fan_control
-WorkingDirectory=/path/to/your/config
-StandardOutput=file:/var/log/nvidia_fan_control.log
-StandardError=file:/var/log/nvidia_fan_control_error.log
-Restart=always
-User=root
-Group=root
-
-[Install]
-WantedBy=multi-user.target
-```
+Service reads config file from your `~/` root folder
 
 ```bash
-sudo systemctl daemon-reload
-sudo systemctl enable nvidia_fan_control.service
-sudo systemctl start nvidia_fan_control.service
 sudo systemctl status nvidia_fan_control.service
 ```
 

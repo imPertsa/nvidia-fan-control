@@ -61,7 +61,7 @@ func main() {
 	defer logFile.Close()
 	log.SetOutput(logFile)
 
-	config, err := loadConfig("config.json")
+	config, err := loadConfig(".nvidia_fan_control")
 	if err != nil {
 		log.Fatalf("Failed to load config: %v", err)
 	}

@@ -1,0 +1,15 @@
+[Unit]
+Description=NVIDIA Fan Control Service
+After=network.target
+
+[Service]
+ExecStart=sudo /usr/local/bin/nvidia_fan_control
+WorkingDirectory=/home/pertsa/
+StandardOutput=file:/var/log/nvidia_fan_control.log
+StandardError=file:/var/log/nvidia_fan_control_error.log
+Restart=always
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
